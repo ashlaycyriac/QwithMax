@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Button, TextInput,ScrollView, Pressable } from 
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 import Card from './Card';
-import shop from './shop';
 const omit = require('lodash.omit'); // to exclude one function parameter from props 
 
 export default function UserHome(props) {

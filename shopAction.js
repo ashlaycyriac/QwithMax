@@ -31,11 +31,13 @@ const rejectUser=()=>
 
   return (
     <View style={styles.container}>
-     <Text> Next User is {props.route.params.user.Name}</Text>
-     <Text> {props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
-     <Text> Next User is {props.route.params.user.Address}</Text>
-     <Text> Next User is {props.route.params.user.ContactNumber}</Text>
+      <View style={styles.inner}>
+     <Text style={styles.Detailstext}> Next user is {props.route.params.user.Name}</Text>
+     <Text style={styles.smalltext}> {props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
+     <Text style={styles.smalltext}>Address: {props.route.params.user.Address}</Text>
+     </View>
       <View style={styles.buttonContainer}>
+     
        <Pressable style={styles.button}
      onPress= {()=> acceptUser()}>
 <Text style={styles.Buttontext}>{'Let ' + props.route.params.user.Name + " In !"}</Text>
@@ -44,7 +46,8 @@ const rejectUser=()=>
         onPress= {()=> rejectUser()}>
 <Text style={styles.Buttontext}>{'Cancel ' + props.route.params.user.Name + "'s Reservation !"}</Text>
    </Pressable>
-</View>
+   </View>
+
 
     </View>
   );
@@ -52,11 +55,23 @@ const rejectUser=()=>
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
 
+    justifyContent: 'space-between',
+
+    flexDirection:'column',
+    paddingTop:50
+
+  },
+  inner:{
+    paddingLeft:20,
+    backgroundColor: '#fff',
+    paddingTop:30,
+    borderColor:'black',
+    borderWidth:5,
+    borderRadius:20,
 
   },
   button:{    justifyContent: 'center',
@@ -64,17 +79,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 20,
     paddingHorizontal: 32,
-    borderRadius: 20,
+    borderRadius: 50,
+    
     elevation: 20,
-    width:350,
+    width:200,
     height:50,
     backgroundColor: 'black',
+    borderWidth:2,
+    borderColor:'white'
+    
   },
   buttonContainer:{
-    alignContent:'center',
-    flexDirection:'column',
-    justifyContent:'space-around',
-    paddingTop:50
+
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingTop:50,
 
   },
   Buttontext: {
@@ -83,5 +102,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+ Detailstext: {
+    fontSize: 30,
+    lineHeight: 45,
+    fontWeight: 'bold',
+    letterSpacing: 0.50,
+    color: 'black',
+  },
+  smalltext: {
+    fontSize:14,
+    lineHeight: 45,
+
+    letterSpacing: 0.25,
+    color: 'black',
   },
 });

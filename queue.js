@@ -52,7 +52,7 @@ return(
 <View style={styles.containerMain}>
 
 
-<Image source={require('./max.png')} style={{height:200,width:100}}></Image>
+<Image source={require('./max.png')} style={{height:280,width:140}}></Image>
 <Text style={styles.textMax}>Max Is In The Queue For You</Text>
 <View style={{flexDirection:'row',alignItems:'center'}}>
 <Text style={styles.textMax}>Your Position Is          </Text>

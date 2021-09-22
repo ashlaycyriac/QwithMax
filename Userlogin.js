@@ -11,7 +11,8 @@ export default function Userlogin(props) {
 
 
  const logIncheck=()=>{
-  const url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password 
+   let url=null
+  props.route.params.mode==="User"? ( url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password="'+password+'"') : (url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password) 
   console.log(url)
   axios.get(url)
   .then(function (response) {
