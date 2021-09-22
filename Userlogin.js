@@ -43,7 +43,12 @@ export default function Userlogin(props) {
      onPress= {()=> logIncheck()}>
      <Text style={styles.Buttontext}>Login</Text>
    </Pressable>
-
+   <View style={{alignItems:'center',paddingTop:100,}}>
+ <Pressable style={styles.signUpbutton}
+     onPress= {()=> navigation.navigate('signUp',{mode:props.route.params.mode})}>
+     <Text style={styles.text}>Sign Up</Text>
+   </Pressable> 
+   </View>
 {console.log(LoggedIn)}
     </View>
   );
@@ -64,15 +69,36 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 20,
     width:200,
+    height:50,
     backgroundColor: 'black',
   },
+  signUpbutton:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 20,
+    width:140,
+    height:40,
+    backgroundColor: 'grey',
+  },
   Buttontext: {
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
   },
+
+  text: {
+    fontSize: 20,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+ 
   Titletext: {
     fontSize: 28,
     lineHeight: 50,

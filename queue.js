@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, TextInput ,ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Pressable, TextInput ,ScrollView, Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 
@@ -49,37 +49,71 @@ const pollPosition=(queryState)=>
 
     
 return(
-    <View>
+<View style={styles.containerMain}>
 
- <Text style={styles.position}>{positionState}</Text>
- <Button
-     onPress= {()=> cancelReservation()}
-     title="Cancel Reservation"
-   />
+
+<Image source={require('./max.png')} style={{height:200,width:100}}></Image>
+<Text style={styles.textMax}>Max Is In The Queue For You</Text>
+<View style={{flexDirection:'row',alignItems:'center'}}>
+<Text style={styles.textMax}>Your Position Is          </Text>
+
+<Text style={styles.position}>{positionState}</Text>
+</View>
+<Image source={require('./processing.gif')} style={{height:200,width:200}}></Image>
+<View style={styles.container}>
+
+   <Pressable style={styles.button}
+     onPress= {()=> cancelReservation()}>
+     <Text style={styles.text}>Cancel Reservation</Text>
+   </Pressable> 
+</View>
 </View>
 );}
 
 const styles = StyleSheet.create({
     container: {
+      paddingTop:40,
       flex: 1,
+      alignItems: 'center',
+
       backgroundColor: '#fff',
-      
-      justifyContent: 'center',
-      elevation: 5,
-      flexWrap: "wrap",
-      alignSelf:'flex-start',
-      flexDirection: "column",
-      marginTop:20,
-      padding: 1,
-      paddingLeft: 5,
-      height:200,
-      width:400,
-      borderColor:'rgba(158, 150, 150, 0.4)',
-      borderTopWidth:1,
-      borderLeftWidth:1,
-      borderRightWidth:1,
-      borderBottomWidth:1
+      flexDirection:'column',
+      justifyContent:'space-around'
     },
+    containerMain:{
+      flex: 1,
+      alignItems: 'center',
+      paddingTop:10,
+      backgroundColor: '#fff',
+
+
+    },
+    button:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 20,
+      elevation: 20,
+      width:250,
+      height:50,
+      backgroundColor: 'black',
+    },
+   
+    text: {
+      fontSize: 20,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: 'white',
+    },
+    textMax:{ fontSize: 20,
+      lineHeight: 80,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: 'black',
+}
+    ,
     details: {
         alignSelf:'flex-start',
         backgroundColor: '#fff',  

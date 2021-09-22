@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 import axios from 'axios';
 
 export default function shopAction(props) {
@@ -35,15 +35,16 @@ const rejectUser=()=>
      <Text> {props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
      <Text> Next User is {props.route.params.user.Address}</Text>
      <Text> Next User is {props.route.params.user.ContactNumber}</Text>
-       <Button
-     onPress= {()=> acceptUser()}
-     title = {'Let ' + props.route.params.user.Name + " In !"}
-   />
-   <Button
-        onPress= {()=> rejectUser()}
-     title = {'Cancel ' + props.route.params.user.Name + "'s Reservation !"}
-   />
-
+      <View style={styles.buttonContainer}>
+       <Pressable style={styles.button}
+     onPress= {()=> acceptUser()}>
+<Text style={styles.Buttontext}>{'Let ' + props.route.params.user.Name + " In !"}</Text>
+   </Pressable>
+   <Pressable style={styles.button}
+        onPress= {()=> rejectUser()}>
+<Text style={styles.Buttontext}>{'Cancel ' + props.route.params.user.Name + "'s Reservation !"}</Text>
+   </Pressable>
+</View>
 
     </View>
   );
@@ -55,5 +56,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
+
+  },
+  button:{    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 20,
+    width:350,
+    height:50,
+    backgroundColor: 'black',
+  },
+  buttonContainer:{
+    alignContent:'center',
+    flexDirection:'column',
+    justifyContent:'space-around',
+    paddingTop:50
+
+  },
+  Buttontext: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });

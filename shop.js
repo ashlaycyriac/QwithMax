@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput ,Image} from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable ,Image} from 'react-native';
 import axios from 'axios';
 
 export default function shop(props) {
@@ -31,10 +31,11 @@ export default function shop(props) {
    <Text style={styles.details}> {props.route.params.shopData.vaccine}{"\n"}</Text>
    <Text style={styles.details}> {props.route.params.shopData.pincode}{"\n"}</Text>
     </View>
-    <Button
-     onPress= {()=> getInQueue()}
-     title="Get in Queue with Max"
-   />
+  <Pressable style={styles.button}
+
+     onPress= {()=> getInQueue()}>
+     <Text style={styles.Buttontext}>Let Max Wait In Queue For You</Text>
+   </Pressable>
    
 
     </View>
@@ -63,5 +64,22 @@ const styles = StyleSheet.create({
         picture:{
             width:200,
             height:200
-        }
+        },
+        button:{
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingVertical: 12,
+          paddingHorizontal: 32,
+          borderRadius: 20,
+          elevation: 20,
+          width:320,
+          backgroundColor: 'black',
+        },
+        Buttontext: {
+          fontSize: 16,
+          lineHeight: 21,
+          fontWeight: 'bold',
+          letterSpacing: 0.25,
+          color: 'white',
+        },
 });

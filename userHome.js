@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         paddingTop:20,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'black', },
+        color: 'grey', },
         Button:{
           alignItems: 'center',
           justifyContent: 'center',

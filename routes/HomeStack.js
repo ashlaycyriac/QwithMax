@@ -9,6 +9,8 @@ import queue from '../queue';
 import shopping from '../shopping';
 import shopHome from '../shopHome';
 import shopAction from '../shopAction';
+import signUp from '../signUp';
+import test from '../test';
 const Stack = createNativeStackNavigator();
 
 function HomeStack (){
@@ -57,6 +59,17 @@ function HomeStack (){
         name="shopAction"
         component={shopAction} 
         options={{ title: 'Accept or Reject The User' }}       />
+              <Stack.Screen
+        
+        name="signUp"
+        component={signUp} 
+        options={{ title: 'Sign Up' }}       />
+
+<Stack.Screen
+        
+        name="test"
+        component={test} 
+        options={{ title: 'Sign Up' }}       />
         
       </Stack.Navigator>
     </NavigationContainer>
