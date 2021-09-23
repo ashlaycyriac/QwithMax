@@ -10,6 +10,7 @@ import shopping from '../shopping';
 import shopHome from '../shopHome';
 import shopAction from '../shopAction';
 import signUp from '../signUp';
+import report from '../visitorsReport';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,11 @@ function HomeStack (){
         name="signUp"
         component={signUp} 
         options={{ title: 'Sign Up' }}       />
+                      <Stack.Screen
+        
+        name="report"
+        component={report} 
+        options={{ title: 'Visitors Report' }}       />
 
 
 

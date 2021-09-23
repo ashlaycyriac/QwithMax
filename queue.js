@@ -53,13 +53,14 @@ return(
 
 
 <Image source={require('./max.png')} style={{height:280,width:140}}></Image>
-<Text style={styles.textMax}>Max Is In The Queue For You</Text>
+<Text style={styles.textMax}>Max is in the queue for you</Text>
 <View style={{flexDirection:'row',alignItems:'center'}}>
-<Text style={styles.textMax}>Your Position Is          </Text>
+<Image source={require('./processing.gif')} style={{height:100,width:100}}></Image>
+<Text style={styles.textMax}>Your Position Is </Text>
 
-<Text style={styles.position}>{positionState}</Text>
+<Text style={styles.position}> {positionState}</Text>
 </View>
-<Image source={require('./processing.gif')} style={{height:200,width:200}}></Image>
+
 <View style={styles.container}>
 
    <Pressable style={styles.button}

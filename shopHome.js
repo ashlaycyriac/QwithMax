@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput,ScrollView, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput,ScrollView, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 
 
+
+
+
 export default function shopHome(props) {
+
     const navigation= props.navigation
+
+
+
     const getUser=(id)=>
     {
 
@@ -13,7 +20,7 @@ export default function shopHome(props) {
         console.log(url)
         axios.get(url)
         .then(function (response) {
-            console.log(response.data)
+          console.log(response.data)
           response.data.message==="no one waiting in the queue"?
           alert('No Users Waiting In Queue'):
           navigation.navigate('shopAction',{user:response.data,shopid:props.route.params.shopData.shopid})
@@ -23,14 +30,21 @@ export default function shopHome(props) {
 
 return(
 <View style={styles.container}>
+<Image source={require('./max-shop.png')} style={{height:280,width:140}}></Image>
  
- <Text style={styles.Titletext}>Welcome {props.route.params.shopData.ShopName} to your shop management console</Text>
+ <Text style={styles.Titletext}>Welcome {props.route.params.shopData.ShopName},control the rush with Max</Text>
  {console.log(props.route.params.shopData)}
 
- <Pressable style={styles.button}
+ <Pressable style={styles.buttonUser}
      onPress= {()=> getUser(props.route.params.shopData.shopid)}>
-     <Text style={styles.Buttontext}>Take In Next User</Text>
+     <Text style={styles.Buttonusertext}>Get Next User In Queue</Text>
    </Pressable>
+  <View style={styles.report}>
+  <Pressable style={styles.button}
+     onPress= {()=> navigation.navigate('report',{shopid:props.route.params.shopData.shopid})}>
+     <Text style={styles.Buttontext}>Generate Report</Text>
+   </Pressable>
+  </View>
 
  </View>
  
@@ -38,11 +52,19 @@ return(
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
-    },button:{
+      paddingTop:100,
+      height:1000
+    },
+    report:{
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      paddingTop:100,
+
+    },
+    
+    button:{
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
@@ -51,7 +73,18 @@ const styles = StyleSheet.create({
         elevation: 20,
         width:200,
         backgroundColor: 'black',
+      }, buttonUser:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 20,
+        elevation: 20,
+        width:400,
+        height:50,
+        backgroundColor: 'black',
       },
+   
       Buttontext: {
         fontSize: 16,
         lineHeight: 21,
@@ -59,8 +92,15 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'white',
       },
+      Buttonusertext: {
+        fontSize: 25,
+        lineHeight: 30,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+      },
       Titletext: {
-        fontSize: 14,
+        fontSize: 18,
         lineHeight: 50,
         paddingBottom:50,
         fontWeight: 'bold',
