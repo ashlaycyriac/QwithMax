@@ -22,21 +22,22 @@ export default function shop(props) {
   
   return (
     <View style={styles.container}>
-   
+  
    <View style={styles.detailsview}>
-   <Image source={require('./shop.png')} style={styles.picture}></Image>
-   <Text style={styles.details}> {props.route.params.shopData.name}{"\n"}</Text>
-   <Text style={styles.details}> {props.route.params.shopData.number}{"\n"}</Text>
-   <Text style={styles.details}> {props.route.params.shopData.address}{"\n"}</Text>
-   <Text style={styles.details}> {props.route.params.shopData.vaccine}{"\n"}</Text>
-   <Text style={styles.details}> {props.route.params.shopData.pincode}{"\n"}</Text>
+   <Image source={require('./shop.png')} style={styles.picture}></Image> 
+   <Text style={styles.details}>Name                                   : {props.route.params.shopData.name}{"\n"}</Text>
+   <Text style={styles.details}>Contact Number                : {props.route.params.shopData.number}{"\n"}</Text>
+   <Text style={styles.details}>Address : {props.route.params.shopData.address}{"\n"}</Text>
+   <Text style={styles.details}>Vaccine Doses Required :  {props.route.params.shopData.vaccine}{"\n"}</Text>
+   <Text style={styles.details}>Pincode                               : {props.route.params.shopData.pincode}{"\n"}</Text>
     </View>
+    <View style={styles.buttonView}>
   <Pressable style={styles.button}
 
      onPress= {()=> getInQueue()}>
      <Text style={styles.Buttontext}>Let Max Wait In Queue For You</Text>
    </Pressable>
-   
+   </View>
 
     </View>
   );
@@ -46,24 +47,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingLeft:25,
-    paddingTop:20
+    paddingLeft:18,
+    paddingTop:100
   },
   details: {
     justifyContent:'center',
+    paddingLeft:5,
     
     backgroundColor: '#fff',  
     fontSize: 14,
     fontWeight: "bold"   },
     picture:{
-        width:200,
-        height:200
+        width:100,
+        height:100
     },
     detailsview: {
+borderWidth:2,
+borderRadius:20,
+width:410
+        },
+        buttonView:{
+          alignItems:'center',
+          paddingTop:20
         },
         picture:{
             width:200,
-            height:200
+            height:200,
+            alignSelf:'center',
+            
         },
         button:{
           alignItems: 'center',

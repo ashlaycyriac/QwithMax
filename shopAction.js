@@ -32,8 +32,8 @@ const rejectUser=()=>
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-     <Text style={styles.Detailstext}> Next user is {props.route.params.user.Name}</Text>
-     <Text style={styles.smalltext}> {props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
+     <Text style={styles.Detailstext}>Next user is {props.route.params.user.Name}</Text>
+     <Text style={styles.smalltext}>{props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
      <Text style={styles.smalltext}>Address: {props.route.params.user.Address}</Text>
      </View>
       <View style={styles.buttonContainer}>
@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop:30,
     borderColor:'black',
-    borderWidth:5,
+    borderWidth:2,
+    width:440,
     borderRadius:20,
 
   },
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
   smalltext: {
     fontSize:14,
     lineHeight: 45,
-
+    paddingRight:10,
     letterSpacing: 0.25,
     color: 'black',
   },

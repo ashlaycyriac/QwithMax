@@ -11,6 +11,7 @@ import shopHome from '../shopHome';
 import shopAction from '../shopAction';
 import signUp from '../signUp';
 import report from '../visitorsReport';
+import visitDetails from '../visitDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,13 @@ function HomeStack (){
         name="report"
         component={report} 
         options={{ title: 'Visitors Report' }}       />
+
+<Stack.Screen
+        
+        name="visitDetails"
+        component={visitDetails} 
+        options={{ title: 'Visitor Details' }}       />
+
 
 
 

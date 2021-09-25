@@ -38,22 +38,22 @@ const styles = StyleSheet.create({
       paddingLeft: 5,
       height:200,
       width:400,
-      borderColor:'rgba(158, 150, 150, 0.4)',
-      borderTopWidth:1,
-      borderLeftWidth:1,
+      borderColor:'rgba(0,0,0, 1)',
+      borderTopWidth:4,
+      borderLeftWidth:4,
       borderRightWidth:1,
       borderBottomWidth:1,
-      borderRadius:40
+      borderRadius:20
     },
     details: {
         alignSelf:'flex-start',
         backgroundColor: '#fff',  
-        fontSize: 14,
+        fontSize: 18,
   },
         details1: {
             alignSelf:'flex-start',
             backgroundColor: '#fff',  
-            fontSize: 17,
+            fontSize: 25,
             fontWeight: "bold"   },
 
     aggregate: {

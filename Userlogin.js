@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Pressable } from 'react-native';
 import axios from 'axios';
 
 export default function Userlogin(props) {
@@ -8,9 +8,11 @@ export default function Userlogin(props) {
     const [number, onChangeNumber] = React.useState(null);
   const [password, onChangePassword] = React.useState(null);
   const [LoggedIn, setLogin] = React.useState(0);
+  const[loading,setLoading]=React.useState(0);
 
 
  const logIncheck=()=>{
+   setLoading(1)
    let url=null
   props.route.params.mode==="User"? ( url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password="'+password+'"') : (url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password) 
   console.log(url)
@@ -21,10 +23,13 @@ export default function Userlogin(props) {
     (props.route.params.mode==="User"?(navigation.navigate('UserHome',{userid:response.data.details.id}),setLogin(1)):
      navigation.navigate('shopHome',{shopData:response.data.details}))
      : alert(" Invalid Credentials ! Please check the Username and Password entered !")
+     setLoading(0)
   })}
   
   return (
+   
     <View style={styles.container}>
+   
      <Text style={styles.Titletext}>Welcome to {props.route.params.mode} Login !</Text>
      <TextInput style={styles.input}
      
@@ -44,12 +49,15 @@ export default function Userlogin(props) {
      onPress= {()=> logIncheck()}>
      <Text style={styles.Buttontext}>Login</Text>
    </Pressable>
-   <View style={{alignItems:'center',paddingTop:100,}}>
+   
+   <View style={{alignItems:'center',paddingTop:80,}}>
  <Pressable style={styles.signUpbutton}
      onPress= {()=> navigation.navigate('signUp',{mode:props.route.params.mode})}>
      <Text style={styles.text}>Sign Up</Text>
    </Pressable> 
    </View>
+   {loading===1?  <Image source={require('./assets/loading.gif')} style={{width:250,height:100}}></Image>
+: null}
 {console.log(LoggedIn)}
     </View>
   );
@@ -60,7 +68,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop:100
+
   },
   button:{
     alignItems: 'center',

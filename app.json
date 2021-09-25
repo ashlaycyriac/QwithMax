@@ -27,7 +27,7 @@
       "package": "io.expo.max"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
