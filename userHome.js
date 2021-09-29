@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput,ScrollView, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput,ScrollView, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
 import Card from './Card';
@@ -13,18 +13,27 @@ export default function UserHome(props) {
     }
 
     const searchShopes=()=>{
+      setLoading(1);
         const url="https://muleq4u.us-e2.cloudhub.io/api/Shop?pincode="+number 
         console.log(url)
         axios.get(url)
         .then(function (response) {
           setShops(response.data)
           console.log(response.data)
-                })}
+          setLoading(0);
+                })
+        .catch(function(error){
+error.response.status===400? alert("Please Enter The Pincode") : alert("Transient Error Occured, Please Retry")
+setLoading(0);        
+})
+      
+      }
 
 
     const [number, onChangeNumber] = React.useState(null);
     const [shops, setShops] = React.useState([]);
     const navigation= props.navigation
+    const[loading,setLoading]=React.useState(0);
 return(
 <View style={styles.container}>
  
@@ -41,12 +50,18 @@ return(
      onPress= {()=> searchShopes()}>
      <Text style={styles.text}>Search</Text>
    </Pressable>
+   {loading===1?  <Image source={require('./assets/loading.gif')} style={{width:250,height:100}}></Image>
+: null}
+
 <ScrollView style={styles.scroll}>
        {shops.map((prop, key) => {
+
+ 
          return (
+          
            <Card key={prop.shopid} id={prop.shopid} name={prop.ShopName} address={prop.ShopAddress} 
            number={prop.ShopContactNumber} vaccine={prop.VaccinationRequirement}
-           pincode={prop.pincode} shop={shopSelected} /> 
+           pincode={prop.pincode} queue={prop.peopleInQueue} pic={prop.imageurl} shop={shopSelected} /> 
 
          );
       })}

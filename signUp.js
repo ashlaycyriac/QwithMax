@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Pressable, Alert } from 'react-native';
 import axios from 'axios';
 
 export default function signUp(props) {
@@ -11,6 +11,10 @@ export default function signUp(props) {
   const [address, onChangeAddress] = React.useState(null);
   const [pincode, onChangePincode] = React.useState(null);
   const [vaccine, onChangeVaccine] = React.useState(null);
+  const [pic, onChangeurl] = React.useState(null);
+  
+  let payload=null
+  
 
 
 
@@ -25,7 +29,8 @@ payload={
     mobileNumber:parseInt(number),
     password:password,
     pincode:parseInt(pincode),
-    vaccineReq:parseInt(vaccine)
+    vaccineReq:parseInt(vaccine),
+    url:pic
 }
     ):(
         payload={   name:name,
@@ -52,6 +57,7 @@ payload={
   return (
 
     <View style={styles.container}>
+            <Image source={require('./assets/splash.png')} style={{height:140,width:140}}></Image>
      <Text style={styles.Titletext}>Welcome to {props.route.params.mode} SignUp !</Text>
      <TextInput style={styles.input}
         onChangeText={onChangeName}
@@ -78,6 +84,7 @@ payload={
         secureTextEntry={true}
         placeholder="Enter your Password"
       />
+      
       {props.route.params.mode==="Shop"? <TextInput style={styles.input}
      
      onChangeText={onChangePincode}
@@ -94,11 +101,18 @@ payload={
      keyboardType="numeric"
      placeholder="Enter How Many Doses Of Vaccine Is Required For Entry"
    /> : null}
+   {props.route.params.mode==="Shop"? <TextInput style={styles.input}
+     
+     onChangeText={onChangeurl}
+     value={pic}
+
+     placeholder="Enter URL Of The Shop Image"
+   /> : null}
        <Pressable style={styles.button}
      onPress= {()=> signUp()}>
      <Text style={styles.Buttontext}>Sign Up</Text>
    </Pressable>
-{console.log(name,address,pincode,password,number,vaccine)}
+{console.log(name,address,pincode,password,number,vaccine,pic)}
     </View>
   );
 }

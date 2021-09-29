@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Pressable,Animated } from 'react-native';
 import axios from 'axios';
 
 export default function Userlogin(props) {
@@ -12,7 +12,7 @@ export default function Userlogin(props) {
 
 
  const logIncheck=()=>{
-   setLoading(1)
+    setLoading(1)
    let url=null
   props.route.params.mode==="User"? ( url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password="'+password+'"') : (url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password) 
   console.log(url)
@@ -28,6 +28,9 @@ export default function Userlogin(props) {
   
   return (
    
+    <View style={styles.main}>
+      <Image source={require('./assets/splash.png')} style={{height:200,width:200}}></Image>
+
     <View style={styles.container}>
    
      <Text style={styles.Titletext}>Welcome to {props.route.params.mode} Login !</Text>
@@ -60,6 +63,8 @@ export default function Userlogin(props) {
 : null}
 {console.log(LoggedIn)}
     </View>
+    </View>
+
   );
 }
 
@@ -68,7 +73,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingTop:100
+    paddingTop:50
+    
+
+  },
+  main: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    
 
   },
   button:{

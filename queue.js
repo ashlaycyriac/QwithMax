@@ -53,13 +53,16 @@ return(
 
 
 <Image source={require('./max.png')} style={{height:280,width:140}}></Image>
-<Text style={styles.textMax}>Max is in the queue for you</Text>
+<Text style={styles.textMax}>Max is in the queue for you at {props.route.params.name}</Text>
 <View style={{flexDirection:'row',alignItems:'center'}}>
 <Image source={require('./processing.gif')} style={{height:100,width:100}}></Image>
 <Text style={styles.textMax}>Your Position Is </Text>
-
 <Text style={styles.position}> {positionState}</Text>
+
 </View>
+
+<Text style={styles.textMax}>{positionState<3? "Go to the shop now !" : "Get to the shop once you are in the top 3"}</Text>
+<Text style={styles.textMax}>Your OTP Is : {(((props.route.params.token).split('-'))[0])} </Text>
 
 <View style={styles.container}>
 

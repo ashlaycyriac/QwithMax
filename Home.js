@@ -23,11 +23,10 @@ return(
      <Text style={styles.text}>Shop</Text>
    </Pressable> 
    <StatusBar style="auto" />
-  
- 
+   
  </View>
 
- </View>
+  </View>
  
 );}
 
@@ -44,13 +43,13 @@ const styles = StyleSheet.create({
     containermain: {
   
       backgroundColor: '#fff',
-  
+      alignItems:'center'
 
     },
     containerpic: {
   
       backgroundColor: '#fff',
-      alignItems:'center'
+      alignItems:'center',
 
     },
     button:{

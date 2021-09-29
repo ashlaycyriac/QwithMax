@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable, Alert } from 'react-native';
 import axios from 'axios';
 
 export default function shopAction(props) {
   const navigation= props.navigation
+  const [otp, onChangeotp] = React.useState(null);
   
   const acceptUser=()=>
   {
@@ -33,13 +34,20 @@ const rejectUser=()=>
     <View style={styles.container}>
       <View style={styles.inner}>
      <Text style={styles.Detailstext}>Next user is {props.route.params.user.Name}</Text>
-     <Text style={styles.smalltext}>{props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "either not vaccinated or didnt update vaccine status" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
+     <Text style={styles.smalltext}>{props.route.params.user.Name} is {props.route.params.user.VaccinatedStatus===null? "not vaccinated" :"vaccinated with "+props.route.params.user.VaccinatedStatus+" doses"}</Text>
      <Text style={styles.smalltext}>Address: {props.route.params.user.Address}</Text>
      </View>
+     <TextInput style={styles.input}
+
+onChangeText={onChangeotp}
+     value={otp}
+
+     placeholder="Enter User OTP"
+   />
       <View style={styles.buttonContainer}>
-     
-       <Pressable style={styles.button}
-     onPress= {()=> acceptUser()}>
+        {console.log(otp,((props.route.params.user.token).split("-"))[0])}
+         <Pressable style={styles.button}
+     onPress= {()=> (otp===((props.route.params.user.token).split("-"))[0])? acceptUser() : alert("Incorrect OTP")}>
 <Text style={styles.Buttontext}>{'Let ' + props.route.params.user.Name + " In !"}</Text>
    </Pressable>
    <Pressable style={styles.button}
@@ -69,9 +77,10 @@ const styles = StyleSheet.create({
     paddingLeft:20,
     backgroundColor: '#fff',
     paddingTop:30,
+    paddingBottom:10,
     borderColor:'black',
-    borderWidth:2,
-    width:440,
+    borderWidth:4,
+    width:'100%',
     borderRadius:20,
 
   },
@@ -83,8 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     
     elevation: 20,
-    width:200,
-    height:50,
+    width:'50%',
+    height:'50%',
     backgroundColor: 'black',
     borderWidth:2,
     borderColor:'white'
@@ -110,6 +119,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.50,
     color: 'black',
+  },
+  input:{
+    width:400,
+    height:50,
+    paddingLeft:10,
+    borderWidth:1
+
+
   },
   smalltext: {
     fontSize:14,

@@ -24,12 +24,14 @@ export default function shop(props) {
     <View style={styles.container}>
   
    <View style={styles.detailsview}>
-   <Image source={require('./shop.png')} style={styles.picture}></Image> 
-   <Text style={styles.details}>Name                                   : {props.route.params.shopData.name}{"\n"}</Text>
-   <Text style={styles.details}>Contact Number                : {props.route.params.shopData.number}{"\n"}</Text>
+   <Image source={{uri:props.route.params.shopData.pic}} style={styles.picture}></Image> 
+   <Text style={styles.details}>Name : {props.route.params.shopData.name}{"\n"}</Text>
+   <Text style={styles.details}>Contact Number : {props.route.params.shopData.number}{"\n"}</Text>
    <Text style={styles.details}>Address : {props.route.params.shopData.address}{"\n"}</Text>
-   <Text style={styles.details}>Vaccine Doses Required :  {props.route.params.shopData.vaccine}{"\n"}</Text>
-   <Text style={styles.details}>Pincode                               : {props.route.params.shopData.pincode}{"\n"}</Text>
+   <Text style={styles.details}>Vaccine Doses Required : {props.route.params.shopData.vaccine}{"\n"}</Text>
+   <Text style={styles.details}>Pincode : {props.route.params.shopData.pincode}{"\n"}</Text>
+   <Text style={styles.details}>People In Queue : {props.route.params.shopData.queue}{"\n"}</Text>
+  
     </View>
     <View style={styles.buttonView}>
   <Pressable style={styles.button}
@@ -71,9 +73,10 @@ width:410
           paddingTop:20
         },
         picture:{
-            width:200,
-            height:200,
-            alignSelf:'center',
+resizeMode:'contain',
+width:200,
+height:200,
+  alignSelf:'center',
             
         },
         button:{
