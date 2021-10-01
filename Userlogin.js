@@ -14,7 +14,7 @@ export default function Userlogin(props) {
  const logIncheck=()=>{
     setLoading(1)
    let url=null
-  props.route.params.mode==="User"? ( url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password="'+password+'"') : (url="https://muleq4u.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password) 
+  props.route.params.mode==="User"? ( url="https://qwithmax-exp.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password="'+password+'"') : (url="https://qwithmax-exp.us-e2.cloudhub.io/api/"+props.route.params.mode+'/'+number+'?password='+password) 
   console.log(url)
   axios.get(url)
   .then(function (response) {

@@ -6,7 +6,7 @@ export default function shopping(props) {
     const navigation= props.navigation
 const endSession=()=>{
     
-    const url="https://muleq4u.us-e2.cloudhub.io/api/endSession"
+    const url="https://qwithmax-exp.us-e2.cloudhub.io/api/endSession"
   console.log(url)
   axios.put(url,{shopId:props.route.params.shopId,personId:props.route.params.userId,token:props.route.params.token})
   .then(function (response) {

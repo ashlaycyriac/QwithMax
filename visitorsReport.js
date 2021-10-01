@@ -12,9 +12,9 @@ export default function report(props) {
       setLoading(1)
     
       const url=((email===null|email==="")?
-      ("https://muleq4u.us-e2.cloudhub.io/api/getReport?shopid="+props.route.params.shopid+"&from="+from+"&to="+to+"&email=test@test.com&emailFlag=0")
+      ("https://qwithmax-exp.us-e2.cloudhub.io/api/getReport?shopid="+props.route.params.shopid+"&from="+from+"&to="+to+"&email=test@test.com&emailFlag=0")
       :
-      ("https://muleq4u.us-e2.cloudhub.io/api/getReport?shopid="+props.route.params.shopid+"&from="+from+"&to="+to+"&email="+email+"&emailFlag=1")
+      ("https://qwithmax-exp.us-e2.cloudhub.io/api/getReport?shopid="+props.route.params.shopid+"&from="+from+"&to="+to+"&email="+email+"&emailFlag=1")
       )
         console.log(url)
         axios.get(url)

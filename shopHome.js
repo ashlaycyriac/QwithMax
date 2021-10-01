@@ -18,7 +18,7 @@ export default function shopHome(props) {
     {
         setLoading(1)
         console.log(loading)
-        const url="https://muleq4u.us-e2.cloudhub.io/api/queue?shopId="+id 
+        const url="https://qwithmax-exp.us-e2.cloudhub.io/api/queue?shopId="+id 
         console.log(url)
         axios.get(url)
         .then(function (response) {

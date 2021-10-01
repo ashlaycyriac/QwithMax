@@ -27,7 +27,7 @@ const cancelReservation=()=>{
     const payload={personId:props.route.params.personId, shopId:props.route.params.shopId,token:props.route.params.token}
 
 
-    const urlCancel="https://muleq4u.us-e2.cloudhub.io/api/queue"
+    const urlCancel="https://qwithmax-exp.us-e2.cloudhub.io/api/queue"
     console.log(payload)
     axios.delete(urlCancel,{
         data: payload
@@ -38,7 +38,7 @@ const cancelReservation=()=>{
 
 const pollPosition=(queryState)=>
 {
-  const url="https://muleq4u.us-e2.cloudhub.io/api/getPosition?shopId="+props.route.params.shopId+"&userId="+props.route.params.personId+"&token="+props.route.params.token
+  const url="https://qwithmax-exp.us-e2.cloudhub.io/api/getPosition?shopId="+props.route.params.shopId+"&userId="+props.route.params.personId+"&token="+props.route.params.token
   console.log(url)
   axios.get(url)
   .then(function (response) {(

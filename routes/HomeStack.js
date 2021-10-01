@@ -12,7 +12,7 @@ import shopAction from '../shopAction';
 import signUp from '../signUp';
 import report from '../visitorsReport';
 import visitDetails from '../visitDetails';
-
+import slotPage from '../slotPage';
 const Stack = createNativeStackNavigator();
 
 function HomeStack (){
@@ -80,8 +80,18 @@ function HomeStack (){
 
 
 
+<Stack.Screen
+        
+        name="slotPage"
+        component={slotPage} 
+        options={{ title: 'Your Active Reservations' }}       />
 
       </Stack.Navigator>
+
+
+
+
+
     </NavigationContainer>
   );
 };

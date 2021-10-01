@@ -1,37 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, componentDidMount } from 'react';
 import { StyleSheet, Text, View, Image, TextInput,ScrollView, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import axios from 'axios';
-import Card from './Card';
+import SlotCard from './SlotCard';
 const omit = require('lodash.omit'); // to exclude one function parameter from props 
 
-export default function UserHome(props) {
+export default function slotPage(props) {
 
-    const shopSelected=(prop)=>{
 
-        navigation.navigate('shopDetails',{shopData:omit(prop,'shop'),userid:props.route.params.userid}) // calling the shop component to show details of shop
-    }
-
-    const searchShopes=()=>{
+    useEffect(()=>{
       setLoading(1);
-        const url="https://qwithmax-exp.us-e2.cloudhub.io/api/Shop?pincode="+number 
+        const url="https://qwithmax-exp.us-e2.cloudhub.io/api/getActiveSpots?userid="+props.route.params.userid
         console.log(url)
         axios.get(url)
         .then(function (response) {
-          setShops(response.data)
+            setSlots(response.data)
           console.log(response.data)
           setLoading(0);
                 })
         .catch(function(error){
-error.response.status===400? alert("Please Enter The Pincode") : alert("Transient Error Occured, Please Retry")
 setLoading(0);        
 })
       
-      }
+      },[])
+  
 
+      
 
-    const [number, onChangeNumber] = React.useState(null);
-    const [shops, setShops] = React.useState([]);
+const gotoqueue=(position,token,shopid,userid,shopName)=>{
+    navigation.goBack(); 
+    navigation.navigate("queue",{position:position,token:token,shopId:shopid,personId:userid,name:shopName})
+
+}
+
+    const [slots, setSlots] = React.useState([]);
     const navigation= props.navigation
     const[loading,setLoading]=React.useState(0);
 return(
@@ -39,38 +41,18 @@ return(
  
 
    <StatusBar style="auto" />
-
-   <Pressable style={styles.Buttonspot}
-     onPress= {()=> navigation.navigate("slotPage",{userid:props.route.params.userid})}>
-     <Text style={styles.text}>Get Active Reservations</Text>
-   </Pressable>
-   
-   <Text style={styles.details}>Enter the pincode here to search for shops </Text>
-   <TextInput style={styles.input}
-     
-     onChangeText={onChangeNumber}
-     value={number}
-     placeholder="PINCODE"
-     keyboardType="numeric"
-   />
-   <Pressable style={styles.Button}
-     onPress= {()=> searchShopes()}>
-     <Text style={styles.text}>Search</Text>
-   </Pressable>
+  
    {loading===1?  <Image source={require('./assets/loading.gif')} style={{width:250,height:100}}></Image>
 : null}
-  <Text style={styles.details}>{(shops.length)===0? "No shops found" :("Shops nearby " + (shops[0].location))}</Text>
- 
+
 <ScrollView style={styles.scroll}>
-       {shops.map((prop, key) => {
+       {slots.map((prop, key) => {
 
- 
+
          return (
-          
-           <Card key={prop.shopid} id={prop.shopid} name={prop.ShopName} address={prop.ShopAddress} 
-           number={prop.ShopContactNumber} vaccine={prop.VaccinationRequirement}
-           pincode={prop.pincode} queue={prop.peopleInQueue} pic={prop.imageurl} shop={shopSelected} /> 
 
+           <SlotCard key={prop.token} name={prop.shopName} position={prop.position} shopid={prop.shopid} userid={prop.userid} token={prop.token}  queue={gotoqueue}></SlotCard>
+           
          );
       })}
      </ScrollView>
@@ -85,7 +67,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop:5
       
     },
     scroll: {

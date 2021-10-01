@@ -8,7 +8,7 @@ export default function shopAction(props) {
   
   const acceptUser=()=>
   {
-    const url="https://muleq4u.us-e2.cloudhub.io/api/acceptUser" 
+    const url="https://qwithmax-exp.us-e2.cloudhub.io/api/acceptUser" 
     axios.put(url,{shopId:props.route.params.shopid,personId:props.route.params.user.id,token:props.route.params.user.token})
     .then(function (response) {
         console.log(response.data),
@@ -20,7 +20,7 @@ export default function shopAction(props) {
 }
 const rejectUser=()=>
 {
-  const url="https://muleq4u.us-e2.cloudhub.io/api/queue" 
+  const url="https://qwithmax-exp.us-e2.cloudhub.io/api/queue" 
   axios.delete(url,{data:{shopId:props.route.params.shopid,personId:props.route.params.user.id,token:props.route.params.user.token}})
   .then(function (response) {
       console.log(response.data),

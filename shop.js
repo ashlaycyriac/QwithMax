@@ -5,7 +5,7 @@ import axios from 'axios';
 export default function shop(props) {
     const navigation= props.navigation
   const getInQueue=()=>{
-    const url="https://muleq4u.us-e2.cloudhub.io/api/queue"
+    const url="https://qwithmax-exp.us-e2.cloudhub.io/api/queue"
     console.log(url)
     axios.post(url,{shopId:props.route.params.shopData.id,personId:props.route.params.userid})
     .then(function (response) {
